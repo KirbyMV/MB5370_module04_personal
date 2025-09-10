@@ -58,4 +58,19 @@ ggplot(mpg, aes(displ, hwy)) +
   geom_point(aes(colour = class)) +
   geom_text(aes(label = model), data = best_in_class)
 ```
+# Scales
+
+Default scales:
+```{r}
+ggplot(mpg, aes(displ, hwy)) +
+  geom_point(aes(colour = class))
+```
+Tweaking scales yourself:
+```{r}
+ggplot(mpg, aes(displ, hwy)) +
+  geom_point(aes(colour = class)) +
+  scale_x_continuous() +
+  scale_y_continuous() +
+  scale_colour_discrete()
+```
 
