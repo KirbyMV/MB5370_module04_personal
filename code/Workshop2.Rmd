@@ -202,4 +202,14 @@ Can develop your own themes too.
         axis.text.x=element_text(colour="black"),
         text=element_text(family="Arial")) 
 ```
+# Saving and exporting your plots
 
+Best way to make it a single file is to use ggsave() 
+
+```{r}
+ggplot(mpg, aes(displ, hwy)) + geom_point()
+
+ggsave("my-plot.pdf")
+#> Saving 7 x 4.32 in image
+```
+Can also add width and height arguments.
