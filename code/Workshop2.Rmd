@@ -73,4 +73,19 @@ ggplot(mpg, aes(displ, hwy)) +
   scale_y_continuous() +
   scale_colour_discrete()
 ```
+# Axis Ticks
+
+```{r}
+ggplot(mpg, aes(displ, hwy)) +
+  geom_point() +
+  scale_y_continuous(breaks = seq(15, 40, by = 5))
+```
+Seq() lists a sequence of numbers from beginning to end and can skip skip numbers if specified.
+
+```{r}
+ggplot(mpg, aes(displ, hwy)) +
+  geom_point() +
+  scale_x_continuous(labels = NULL) +
+  scale_y_continuous(labels = NULL)
+```
 
