@@ -1,8 +1,10 @@
 ---
 title: "MB5370 Module 04. Workshop 1 - Introduction"
 author: "Ben Cresswell"
-output: html_document
 date: "2024-03-22"
+output:
+  html_document: default
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -407,9 +409,36 @@ ggplot(data = <DATA>) +
   <FACET_FUNCTION>
 ```
 
+# Assignment 1
 
+Plot reconstruction
+https://link.springer.com/article/10.1007/s11160-021-09683-7/figures/2 
 
+Load data
+```{r}
 
+plot1_data <- read_csv("../data/plot1_dataset.csv")
+```
+
+Scatterplot
+
+```{r}
+ggplot(data = plot1_data) +
+  geom_point(mapping = aes(x = elevation, y = species, colour = boat))
+```
+
+Scatterplot with line
+```{r}
+ggplot(data = plot1_data) +
+  geom_point(mapping = aes(x = elevation, y = species, colour = boat, shape = boat), size = 2) +
+  scale_shape_manual(values = c(19,24)) +
+  scale_color_manual(values = c("darkgrey","black")) +
+  geom_smooth(mapping = aes(x = elevation, y = species, group = boat, colour = boat), se = FALSE) +
+  theme_bw() +
+  labs(x = "Elevation (m)", y = "Number of Species") +
+  theme(legend.title = element_blank(), 
+        legend.position = c(0.9,0.9))
+```
 
 
 
