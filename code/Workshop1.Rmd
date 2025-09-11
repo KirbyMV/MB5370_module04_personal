@@ -429,8 +429,8 @@ ggplot(data = plot1_data) +
 
 Scatterplot with line
 ```{r}
-ggplot(data = plot1_data) +
-  geom_point(mapping = aes(x = elevation, y = species, colour = boat, shape = boat), size = 2) +
+plot1_revised <- ggplot(data = plot1_data) +
+  geom_point(mapping = aes(x = elevation, y = species, colour = boat, shape = boat), size = 2.5) +
   scale_shape_manual(values = c(19,24)) +
   scale_color_manual(values = c("darkgrey","black")) +
   geom_smooth(mapping = aes(x = elevation, y = species, group = boat, colour = boat), se = FALSE) +
@@ -441,6 +441,9 @@ ggplot(data = plot1_data) +
 ```
 
 
+```{r}
+ggsave("plot1_revised.png")
+```
 
 
 
