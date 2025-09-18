@@ -232,4 +232,17 @@ Can fill in missing values using fill
 treatment |>
   fill(everything())
 ```
+# Fixed values
+
+Sometimes missing values represent zero. Use coalesce to replace them.
+
+```{r}
+x <- c(1, 4, 5, 7, NA)
+coalesce(x, 0)
+```
+Sometimes values like -99 represent missing values
+```{r}
+x <- c(1, 4, 5, 7, -99)
+na_if(x, -99)
+```
 
