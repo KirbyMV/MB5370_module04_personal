@@ -95,3 +95,83 @@ cms_patient_experience |>
   )
 ```
 
+# Pivoting wider 
+
+```{r}
+df <- tribble(
+  ~id, ~measurement, ~value,
+  "A",        "bp1",    100,
+  "B",        "bp1",    140,
+  "B",        "bp2",    115, 
+  "A",        "bp2",    120,
+  "A",        "bp3",    105
+)
+```
+
+```{r}
+df |> 
+  pivot_wider(
+    names_from = measurement,
+    values_from = value
+  )
+```
+new column names: unique values of measurement
+```{r}
+df |> 
+  distinct(measurement) |> 
+  pull()
+```
+
+```{r}
+df |> 
+  select(-measurement, -value) |> 
+  distinct()
+```
+
+pivot_wider combines these results to generate an empty dataframe
+```{r}
+df |> 
+  select(-measurement, -value) |> 
+  distinct() |> 
+  mutate(x = NA, y = NA, z = NA)
+```
+Then it fills in all the missing values using the dta in the input.
+
+# Exercises
+
+Why are pivot_longer and pivot_wider not perfectly symmetrical? Consider the example:
+```{r}
+stocks <- tibble(
+  year   = c(2015, 2015, 2016, 2016),
+  half  = c(   1,    2,     1,    2),
+  return = c(1.88, 0.59, 0.92, 0.17)
+)
+stocks %>% 
+  pivot_wider(names_from = year, values_from = return) %>% 
+  pivot_longer(`2015`:`2016`, names_to = "year", values_to = "return")
+```
+Pivoting reorders the data, so pivoting wider and then longer will reorder them.
+
+Why does this code fail?
+```{r}
+table4a %>% 
+  pivot_longer(c(1999, 2000), names_to = "year", values_to = "cases")
+```
+```{r}
+table4a %>% 
+  pivot_longer(cols = c("1999", "2000"), names_to = "year", values_to = "cases")
+```
+1999 and 2000 aren't in quotes.
+
+Consider the sample tibble below. Do you need to make it wider or longer? What are the variables?
+```{r}
+preg <- tribble(
+  ~pregnant, ~male, ~female,
+  "yes",     NA,    10,
+  "no",      20,    12
+)
+```
+variables: sex, pregnant
+4 observations
+need to make it longer.
+
