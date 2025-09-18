@@ -355,3 +355,39 @@ this one looks good if the intention is to have the column names as observations
 read_csv("a;b\n1;3")
 ```
 It uses semicolons to separate values instead of commas.
+
+#What is relational data?
+
+Simply put, relational data is a collection of multiple data tables in a given dataset or in a project that are related in some ways. 
+These are called relational data because the relations between these tables matter, not just the individual tables, and will even be a key source of the insights you might be able to deliver. 
+Many datasets will contain multiple data tables and the combination of data in these tables will help you to answer your questions of interest.
+
+The three families of verbs designed to work with relational data are:
+1. Mutating joins - add new variables to one dataframe from matching observations in another
+2. Filtering joins - filter observations from one data frame based on whether or not they match an observation in the other table
+3. Set operations - treat observations as if they are set elements
+
+```{r}
+library(tidyverse)
+# install.packages("nycflights13")
+library(nycflights13)
+```
+
+```{r}
+airlines
+```
+```{r}
+airports
+```
+```{r}
+planes
+```
+```{r}
+weather
+```
+flights connects to planes via a single variable, tailnum.
+flights connects to airlines through the carrier variable.
+flights connects to airports in two ways: via origin and dest variables.
+flights connects to weather via origin (the location), and year, month, day and hour (the time).
+
+
