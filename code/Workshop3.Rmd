@@ -1,0 +1,40 @@
+---
+title: "Workshop3"
+output: html_document
+date: "2025-09-17"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+```
+# Lengthening datasets
+
+pivot data to make it tidy. pivot_longer() usually solves a lot of data problems by increasing the number of rows and decreasing the number of columns.
+
+```{r}
+billboard |> 
+  pivot_longer(
+    cols = starts_with("wk"), 
+    names_to = "week", 
+    values_to = "rank"
+  )
+```
+cols specifies the columns you want to pivot
+names_to names the variable stored in column names
+values_to names the variable stored in the cell values
+values_drop_na = TRUE can remove NAs that were created when pivoting simply because the data did not exist
+
+```{r}
+billboard |> 
+  pivot_longer(
+    cols = starts_with("wk"), 
+    names_to = "week", 
+    values_to = "rank",
+    values_drop_na = TRUE
+  )
+```
+
