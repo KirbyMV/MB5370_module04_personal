@@ -175,3 +175,41 @@ variables: sex, pregnant
 4 observations
 need to make it longer.
 
+# Separating and uniting data tables
+
+```{r}
+table3
+```
+Need to separate rate into cases and population
+
+```{r}
+table3 %>% 
+  separate(rate, into = c("cases", "population"))
+```
+separate by default splits values whenever it sees a non alphanumeric character.
+
+Could also rewrite like this:
+```{r}
+table3 %>% 
+  separate(rate, into = c("cases", "population"), sep = "/")
+```
+
+We ask separate to convert into better types using convert = TRUE
+
+```{r}
+table3 %>% 
+  separate(rate, into = c("cases", "population"), convert = TRUE)
+```
+you can also use a vector of integers to separate. can use this to separate the last two digits of each year.
+```{r}
+table3 %>% 
+  separate(year, into = c("century", "year"), sep = 2)
+```
+
+Using unite: combine multiple columns into one
+
+```{r}
+table5 %>% 
+  unite(new, century, year, sep = "")
+```
+
