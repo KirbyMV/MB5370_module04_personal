@@ -213,3 +213,23 @@ table5 %>%
   unite(new, century, year, sep = "")
 ```
 
+# Explicit missing values
+
+NA means absent data. Blank means implicitly absent data.
+```{r}
+treatment <- tribble(
+  ~person,           ~treatment, ~response,
+  "Derrick Whitmore", 1,         7,
+  NA,                 2,         10,
+  NA,                 3,         NA,
+  "Katherine Burke",  1,         4
+)
+```
+
+Can fill in missing values using fill
+
+```{r}
+treatment |>
+  fill(everything())
+```
+
