@@ -61,3 +61,37 @@ df |>
   )
 ```
 
+# Widening datasets
+
+Helps when the observation is scattered across multiple rows.
+```{r}
+cms_patient_experience
+```
+
+Each organization is spread across six rows 
+
+```{r}
+cms_patient_experience |> 
+  distinct(measure_cd, measure_title)
+```
+
+values_from: provide existing columns that define the values
+names_from: column name
+
+```{r}
+cms_patient_experience |> 
+  pivot_wider(
+      names_from = measure_cd,
+    values_from = prf_rate
+  )
+```
+Need to tell it which columns have values that uniquely identify each row
+```{r}
+cms_patient_experience |> 
+  pivot_wider(
+    id_cols = starts_with("org"),
+    names_from = measure_cd,
+    values_from = prf_rate
+  )
+```
+
