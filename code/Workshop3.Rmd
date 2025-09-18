@@ -257,3 +257,25 @@ x == 1
 is.na(x)
 ```
 
+# Implicit missing values
+
+```{r}
+stocks <- tibble(
+  year  = c(2020, 2020, 2020, 2020, 2021, 2021, 2021),
+  qtr   = c(   1,    2,    3,    4,    2,    3,    4),
+  price = c(1.88, 0.59, 0.35,   NA, 0.92, 0.17, 2.66)
+)
+```
+
+The price in the fourth quarter of 2020 is explicitly missing, because its value is NA.
+The price for the first quarter of 2021 is implicitly missing, because it simply does not appear in the dataset.
+
+Here’s another example where if we pivot stocks wider to put the quarter in the columns, both missing values become explicit:
+```{r}
+stocks |>
+  pivot_wider(
+        names_from = qtr, 
+    values_from = price
+  )
+```
+
