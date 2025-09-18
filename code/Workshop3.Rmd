@@ -300,3 +300,58 @@ now read it from the url
 students <- read_csv("https://pos.it/r4ds-students-csv")
 ```
 
+# Practical advice
+
+Are observations in rows?  
+Are variables in columns?
+
+Check whether data is valid
+
+```{r}
+students
+```
+
+Need to recognize N/A as NA
+
+```{r}
+students <- read_csv("https://pos.it/r4ds-students-csv", na = c("N/A", ""))
+
+students
+```
+rename columns to remove spaces because otherwise you'll need to use backticks everytime
+
+```{r}
+students |> 
+  rename(
+    student_id = `Student ID`,
+    full_name = `Full Name`
+  )
+```
+
+# Exercises 
+
+Identify what is wrong with each of the following inline CSV files. What happens when you run the code?
+
+```{r}
+read_csv("a,b\n1,2,3\n4,5,6")
+```
+
+It splits the numbers unevenly because there's only 2 columns
+```{r}
+read_csv("a,b,c\n1,2\n1,2,3,4")
+```
+There are only 3 columns so it squishes the last two numbers into the last column.
+
+```{r}
+read_csv("a,b\n\"1")
+```
+The quotes are wrong.
+```{r}
+read_csv("a,b\n1,2\na,b")
+```
+this one looks good if the intention is to have the column names as observations
+
+```{r}
+read_csv("a;b\n1;3")
+```
+It uses semicolons to separate values instead of commas.
