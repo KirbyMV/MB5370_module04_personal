@@ -52,4 +52,15 @@ ggplot(dat, aes(x = latitude, y = richness_raw)) +
   geom_point()
 ```
 
+# Getting going with maps
 
+First we turn point data into a spatially referenced dataframe (like a GIS shapefile)
+
+sf stands for simple features
+```{r}
+sdat <- st_as_sf(dat, coords = c("longitude", "latitude"), 
+                 crs = 4326)
+```
+st_as_sf converts data types to simple features.
+coords gives the columns that contain our coordinates
+crs stands for coordinate reference system
