@@ -138,5 +138,20 @@ aus <- st_read("../data/data-for-course/spatial-data/Aussie/Aussie.shp")
 shelf <- st_read("../data/data-for-course/spatial-data/aus_shelf/aus_shelf.shp")
 ```
 
+# Mapping your polygons
+
+```{r}
+tm_shape(shelf) + 
+  tm_polygons()
+```
+
+```{r}
+tm_shape(shelf, bbox = sdat) + 
+  tm_polygons() +
+  tm_shape(aus) + 
+  tm_polygons() + 
+  tm_shape(sdat) + 
+  tm_dots()
+```
 
 
