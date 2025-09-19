@@ -122,3 +122,21 @@ tmap_save(tm1, filename = "../output/Richness-map.png",
           width = 600, height = 600)
 ```
 
+# Mapping spatial polygons as layers
+
+#Loading shapefiles
+
+.shp files are usually undesirable bc they are inefficient
+
+.gpkg is better, but we'll stick with .shp for this workshop
+
+```{r}
+aus <- st_read("../data/data-for-course/spatial-data/Aussie/Aussie.shp")
+```
+
+```{r}
+shelf <- st_read("../data/data-for-course/spatial-data/aus_shelf/aus_shelf.shp")
+```
+
+
+
