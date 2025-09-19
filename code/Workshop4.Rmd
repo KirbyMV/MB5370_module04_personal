@@ -35,4 +35,21 @@ dat <- read_csv("../data/data-for-course/copepods_raw.csv")
 dat
 ```
 
+# Data exploration
+
+# Check coordinates
+
+```{r}
+library(ggplot2)
+ggplot(dat) + 
+  aes(x = longitude, y = latitude, color = richness_raw) +
+  geom_point()
+```
+Look at species richness in a non-spatial way
+```{r}
+ggplot(dat, aes(x = latitude, y = richness_raw)) + 
+  stat_smooth() + 
+  geom_point()
+```
+
 
