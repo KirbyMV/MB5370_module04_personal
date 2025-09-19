@@ -84,3 +84,13 @@ crs4326$wkt # crs in well-known text format
 
 Now we need to decide how to project 3 dimensions into 2.
 Projections are defined by a projected coordinate reference system (PCS), and spatial packages in R use the software PROJ to do this.
+
+# Feature collection (points)
+
+```{r}
+sdat
+```
+Now it has a geometry column with the coordinates.
+
+So in summary, a simple feature is like a shapefile, in that it holds a lot of data in columns and rows but is spatially aware. Essentially, that includes extra columns regarding each row's position (in coordinates) and metadata about the coordinate reference system, the type of geometry (Point) and so on.
+
