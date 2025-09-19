@@ -94,3 +94,13 @@ Now it has a geometry column with the coordinates.
 
 So in summary, a simple feature is like a shapefile, in that it holds a lot of data in columns and rows but is spatially aware. Essentially, that includes extra columns regarding each row's position (in coordinates) and metadata about the coordinate reference system, the type of geometry (Point) and so on.
 
+# Cartography
+
+```{r}
+plot(sdat["richness_raw"])
+```
+use [] to select a single variable so it doesn't graph the entire dataframe, like this:
+```{r}
+plot(sdat)
+```
+
