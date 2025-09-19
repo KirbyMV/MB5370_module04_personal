@@ -1,0 +1,28 @@
+---
+title: "Workshop 4"
+output: html_document
+date: "2025-09-19"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+R can be used as a GIS. Useful because of version controls, can save a script, can interface with other R uses like ggplot, and it is free.
+
+# Installing the spatial R packages
+
+```{r}
+# install.packages("sf") 
+# install.packages("terra")
+# install.packages("tmap")
+
+
+#load into R library
+library(tidyverse)
+library(sf) # simple features
+library (terra) # for raster
+library(tmap) # Thematic maps are geographical maps in which spatial data distributions are visualized
+```
+
