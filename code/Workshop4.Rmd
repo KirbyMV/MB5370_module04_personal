@@ -26,3 +26,13 @@ library (terra) # for raster
 library(tmap) # Thematic maps are geographical maps in which spatial data distributions are visualized
 ```
 
+# Downloading and loading the spatial dataset
+
+```{r}
+#load the copepod data into R studio
+library(readr)
+dat <- read_csv("../data/data-for-course/copepods_raw.csv")
+dat
+```
+
+
