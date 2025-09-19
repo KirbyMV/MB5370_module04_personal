@@ -104,3 +104,21 @@ use [] to select a single variable so it doesn't graph the entire dataframe, lik
 plot(sdat)
 ```
 
+# Thematic maps for communication
+
+tmap works similarly to ggplot: we build and add on layers
+
+```{r}
+#using tmap
+
+tm1 <- tm_shape(sdat) + 
+  tm_dots(col = "richness_raw", palette = "tableau.classic_orange" )
+```
+tm_dots to plot dots of the coordinates. Other options are tm_polygons, tm_symbols and many others we’ll see later.
+We’ve chosen "richness_raw" as the color scale
+
+```{r}
+tmap_save(tm1, filename = "../output/Richness-map.png", 
+          width = 600, height = 600)
+```
+
